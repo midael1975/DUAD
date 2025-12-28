@@ -26,19 +26,19 @@ def show_menu():
         
         if option == "1":
             add_students(students)
-        if option == "2":
+        elif option == "2":
             delete_student(students)
-        if option == "3":
+        elif option == "3":
             view_top3(students)
-        if option == "4":
+        elif option == "4":
             view_general_average(students)
-        if option == "5":
+        elif option == "5":
             view_failed_students(students)
-        if option == "6":
+        elif option == "6":
             export_to_csv(students)
-        if option == "7":
+        elif option == "7":
             import_from_csv(students)
-        if option == "8":
+        elif option == "8":
             print("Exiting the program.")
             break
         else:
