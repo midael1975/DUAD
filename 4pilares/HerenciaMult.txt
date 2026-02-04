@@ -1,0 +1,24 @@
+Multiple inheritance allows a class to inherit behaviors from more than one base class. This is used when an object needs to combine capabilities from different sources.
+
+Common Uses
+1. Mixing Behaviors (Mixins)
+This is the most common and safe use.
+
+A mixin is a small class that adds a specific ability, for example:
+
+• Making an object serializable
+• Adding logging capabilities
+• Adding validations
+• Adding utility methods
+Mixins don't represent "things," but rather abilities.
+
+2. Combining Roles
+A class can represent two roles simultaneously.
+
+Example: an object can be both an Employee and a System User.
+
+3. Multiple Specialization
+When a class needs to behave as two different types at the same time.
+
+4. Integrating Functionalities from Different Hierarchies
+Useful when two classes are unrelated, but their methods are needed in a final class.
