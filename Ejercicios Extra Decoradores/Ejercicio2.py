@@ -1,11 +1,13 @@
 user_logged_in = False
 
+class NotAuthenticatedError(Exception):
+    pass
+
 def requires_login(func):
     def wrapper(*args, **kwargs):
         global user_logged_in
-        if user_logged_in == False:
-            print("Error: unauthenticated user")
-            return None
+        if not user_logged_in:
+            raise NotAuthenticatedError("User must be logged in to access this function")
         return func(*args, **kwargs)
     return wrapper
 
@@ -16,5 +18,8 @@ def view_profile():
 user_logged_in = True
 view_profile()
 user_logged_in = False
-view_profile()
+try:
+    view_profile()
+except NotAuthenticatedError as e:
+    print("Error:", e)
 
