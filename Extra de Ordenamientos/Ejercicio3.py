@@ -50,6 +50,29 @@ class BinaryTree:
             print("Tree is empty")
         else:
             self.root.print_vertical(0)
+    
+    def bubble_sort(self):
+        if self.root is None:
+            return
+
+        swapped = True
+        while swapped:
+            swapped = False
+            current = self.root
+
+            while current is not None:
+                if current.left is not None and current.value < current.left.value:
+                    current.value, current.left.value = current.left.value, current.value
+                    swapped = True
+                if current.right is not None and current.value > current.right.value:
+                    current.value, current.right.value = current.right.value, current.value
+                    swapped = True
+                if current.left is not None:
+                    current = current.left
+                elif current.right is not None:
+                    current = current.right
+                else:
+                    break
 
 
 # Example usage
@@ -66,11 +89,6 @@ tree.insert(13)
 
 tree.print_tree()
 
-
-
-
-
-
-
-
-
+print("After sorting:")
+tree.bubble_sort()
+tree.print_tree()
