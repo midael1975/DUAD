@@ -1,0 +1,14 @@
+{
+    "categories": [
+        "University"
+    ],
+    "transactions": [
+        {
+            "title": "Matricula",
+            "amount": 300.0,
+            "category": "University",
+            "transaction_type": "Income",
+            "date": "07/05/2026"
+        }
+    ]
+}
