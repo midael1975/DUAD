@@ -1,0 +1,12 @@
+# REST vs SOAP vs GraphQL
+
+API Type | Data Format Used | Flexibility | Level Implementation Difficulty | Current Usage (High / Medium / Low)
+
+REST     | JSON / XML       | Medium-High | Low                             | High
+SOAP     | XML              | Low         | High                            | Low
+GraphQL  | JSON             | Very High   | Medium-High                     | Medium
+
+Then answer:
+Which do you consider most appropriate for a modern startup developing an online booking system? Why?
+
+GraphQL is most appropriate for a modern startup online booking system because it provides flexible data queries, reduces over-fetching, and enables efficient front-end performance while allowing the API to evolve without breaking clients.

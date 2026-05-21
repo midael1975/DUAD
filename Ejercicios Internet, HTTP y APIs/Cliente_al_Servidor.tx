@@ -1,0 +1,25 @@
+1. From Client to Server 💻 → 💻
+Explain step by step what happens when you type www.youtube.com into your browser until the video appears on
+the screen.
+You must include in your explanation:
+  1. What the client (browser) does.
+     The client types the YouTube address into the browser to make a request to the server.
+
+  2. What role the DNS plays.
+     DNS stands for Domain Name System, and when we type an address into our browser, it translates it into a
+     public IP address, allowing us to make a request to the servers for those domains. Our computers can access
+     DNS servers because routers already have the DNS IP addresses pre-configured.
+
+  3. What happens to the IP address.
+     Once the DNS gives us the IP address of the website we requested, our browser makes a request to the
+     corresponding server, and the server gives us a response.
+
+  4. What the server does.
+     The Servers are computers that are specially designed to respond to client requests; once they receive a
+     request, they will provide a response.
+
+  5. How the HTTP/HTTPS protocol comes into play.
+     HTTP/HTTPS is a protocol that allows communication and data transfer between different systems on the Internet.
+     When we type a website address, we use one of these protocols to communicate with the servers, and they,
+     in turn, provide us with responses using the same protocol.
+

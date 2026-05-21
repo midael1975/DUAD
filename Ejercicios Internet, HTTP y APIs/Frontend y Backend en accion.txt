@@ -1,0 +1,17 @@
+2. Frontend and Backend in Action 🧩
+Suppose you are building a web app for scheduling medical appointments.
+
+   1. Indicate which part of the system corresponds to the frontend and which to the backend.
+      The frontend is what the user can see and interact with (appearance, buttons, links), and the backend
+      is what is everything the user cannot see or interact with, such as the database and app logic.
+
+   2. Mention three possible technologies for each.
+      For the frontend there are HTML, CSS and Javascript, and for the backend there are REST APIs, SOAP,
+      and GraphQL.
+
+   3. Briefly explain how the frontend would communicate with the backend, mentioning the concepts of API, HTTP,
+      and request/response.
+      The user makes a request on the frontend, which communicates with the backend using JavaScript.
+      This activates the server APIs, which then generate a response for each request. During this process
+      of generating a request and response, the HTTP protocol is used to enable communication between the
+      frontend and backend.
