@@ -6,14 +6,9 @@ VIN	          Make	  Model	  Year	Color	Owner ID	Owner Name	Owner Phone	    Insu
 5J6RM4H79EL	  Honda	  CR-V	  2014	Blue	103	        Claire	    555-123-4567	DEF Insurance	    Collision
 1G1RA6EH1FU	Chevrolet Volt	  2015	Red	    104	        Dave	    111-222-3333	GHI Insurance	    Basic Legal
 
-The table meets the 1NF conditions; the composite keys are: VIN + Owner ID; the elements Make, Model, Year, and Color depend on the VIN, and Owner Name, Phone, Insurance Company, and Policy depend on the Owner ID. We will now create the tables.
-
-Cars Table
-
-VIN	        Make	  Model	    Year	Color
-1HGCM82633A	Honda	  Accord	2003	Silver
-5J6RM4H79EL	Honda	  CR V	    2014	Blue
-1G1RA6EH1FU	Chevrolet Volt	    2015	Red
+The table meets the 1NF conditions; the composite keys are: VIN + Owner ID; the elements Make, Model, Year,
+and Color depend on the VIN, and Owner Name, Phone, Insurance Company, and Policy depend on the Owner ID.
+We will now create the tables.
 
 Owners Table
 
@@ -23,13 +18,43 @@ Owner ID	Owner Name	Owner Phone
 103	        Claire	    555-123-4567
 104	        Dave	    111-222-3333
 
-Insurance Table
+Model Table
 
-Owner ID	Insurance Company	Insurance Policy
-101	        ABC Insurance	    Fire & Theft
-102	        XYZ Insurance	    Full Cover
-103	        DEF Insurance	    Collision
-104	        GHI Insurance	    Basic Legal
+model_id    make       model    year  color
+1           Honda      Accord   2003  Silver
+2           Honda      CR‑V     2014  Blue
+3           Chevrolet  Volt     2015  Red
+
+Car_Models Table
+
+Vin            model_id
+1HGCM82633A    1
+5J6RM4H79EL    2
+1G1RA6EH1FU    3
+
+Insurance_Companies Table
+
+company_id  company_name
+1           ABC Insurance
+2           XYZ Insurance
+3           DEF Insurance
+4	        GHI Insurance
+
+Insurances_Policies Table
+
+policy_id   company_id   policy_name
+1           1            Fire & Theft
+2           2            Full Cover
+3           3            Collision
+4           4            Basic Legal
+
+Owner_Insurances Table
+
+owner_id    policy_id
+101         1
+102         2
+103         3
+104         4
 
 Car_Owners table
 
