@@ -1,0 +1,80 @@
+Orders Exercise
+
+Order ID	Customer Name	Customer Phone	Address	Item ID	Item Name	Price	Quantity	Special Request	Delivery Time
+001	            Alice	     123-456-7890	123 Main St	101	Cheeseburger $8	       2	       No onions	    6:00 PM
+001	            Alice	     123-456-7890	123 Main St	102	Fries	     $3	       1	       Extra ketchup	6:00 PM
+002	            Bob	         987-654-3210	456 Elm St	103	Pizza	    $12	       1	       Extra cheese	    7:30 PM
+002	            Bob	         987-654-3210	4th Avenue	102	Fries	     $3	       2	       None	            7:30 PM
+003	            Claire	     555-123-4567	789 Oak St	105	Salad	     $6	       1	       No croutons	   12:00 PM
+004	            Claire	     555-123-4567	464 Georgia 106	Water	     $1	       1	       None	            5:00 PM
+
+This table repeats the customer and order for each item, and the items are repeated in each order. The table meets the conditions of 1NF. The composite keys are Order ID and Item ID; the other elements depend on one or both of them.
+We proceed to separate them into 3 tables to eliminate partial dependencies.
+
+Orders Table
+
+Order ID	Customer Name	Customer Phone	  Address	    Delivery Time
+001	           Alice	     123-456-7890	 123 Main St	  6:00 PM
+002	           Bob	         987-654-3210	 456 Elm St	      7:30 PM
+002	           Bob	         987-654-3210	 4th Avenue	      7:30 PM
+003	           Claire	     555-123-4567	 789 Oak St	     12:00 PM
+004	           Claire	     555-123-4567	 464 Georgia St	  5:00 PM
+
+In this table we observe that two customers appear with two different addresses, so they must be two different records.
+Tabla Items
+
+Item ID	Item Name	  Price
+101	    Cheeseburger	8
+102	    Fries	        3
+103	    Pizza	       12
+105	    Salad	        6
+106	    Water	        1
+
+Tabla Order_Items
+
+Order ID	Item ID	Quantity	Special Request
+001	         101	  2	          No onions
+001	         102	  1	        Extra ketchup
+002	         103	  1	        Extra cheese
+002	         102	  2	            None
+003	         105	  1	        No croutons
+004          106	  1	            None
+
+Now we can see that transitive dependencies exist because Customer Name, Phone, and Address depend on the customer and not the order; therefore, we must separate Customers.
+
+Tabla Customers
+
+Customer ID	Customer Name	Customer Phone	Address
+1	           Alice	     123-456-7890	123 Main St
+2	           Bob	         987-654-3210	456 Elm St
+3	           Bob	         987-654-3210	4th Avenue
+4	           Claire	     555-123-4567	789 Oak St
+5	           Claire	     555-123-4567	464 Georgia St
+
+Tabla Orders
+
+Order ID	Customer ID	Delivery Time
+001	            1	      6:00 PM
+002	            2	      7:30 PM
+002	            3	      7:30 PM
+003	            4	     12:00 PM
+004	            5	      5:00 PM
+
+Tabla Items
+
+Item ID	Item Name	  Price
+101   	Cheeseburger	8
+102	    Fries	        3
+103	    Pizza	       12
+105	    Salad	        6
+106	    Water	        1
+
+Tabla Order_Items
+
+Order ID	Item ID	Quantity	Special Request
+001	          101	   2	      No onions
+001	          102	   1	      Extra ketchup
+002	          103	   1	      Extra cheese
+002	          102	   2	      None
+003	          105	   1	      No croutons
+004	          106	   1	      None
