@@ -1,0 +1,33 @@
+========================================================================================================================
+                                           SELECT STATEMENTS DOCUMENTATION
+========================================================================================================================
+
+Feature     : ORDER BY
+Description : Sorts the result set of a query by one or more columns in ascending (ASC) or descending (DESC) order.
+Example     : SELECT * FROM Books ORDER BY Name ASC;
+------------------------------------------------------------------------------------------------------------------------
+
+Feature     : LIMIT
+Description : Restricts the number of rows returned by the query. Commonly used for pagination or fetching top records.
+Example     : SELECT * FROM Books LIMIT 3;
+------------------------------------------------------------------------------------------------------------------------
+
+Feature     : GROUP BY
+Description : Groups rows that have the same values in specified columns into summary rows (COUNT, SUM, AVG, etc.).
+Example     : SELECT CustomerID, COUNT(*) FROM Rents GROUP BY CustomerID;
+------------------------------------------------------------------------------------------------------------------------
+
+Feature     : INNER JOIN
+Description : Returns only the records that have matching values in both joined tables.
+Example     : SELECT * FROM Books INNER JOIN Authors ON Books.Author = Authors.ID;
+------------------------------------------------------------------------------------------------------------------------
+
+Feature     : LEFT JOIN
+Description : Returns all records from the left table and matching records from the right table. Returns NULL if no match.
+Example     : SELECT * FROM Books LEFT JOIN Authors ON Books.Author = Authors.ID;
+------------------------------------------------------------------------------------------------------------------------
+
+Feature     : RIGHT JOIN
+Description : Returns all records from the right table and matching records from the left table. Returns NULL if no match.
+Example     : SELECT * FROM Books RIGHT JOIN Authors ON Books.Author = Authors.ID;
+========================================================================================================================
