@@ -1,0 +1,34 @@
+========================================================================================================================
+                                       ANALYSIS OF THE ALL - ODD SET OPERATION IN SQL
+========================================================================================================================
+
+1. Set Operation Analysis (All - Odd):
+------------------------------------------------------------------------------------------------------------------------
+- "All" represents the set of all elements (for example, all integers or all records in a table).
+- "Odd" represents the set of odd numbers (or a specific subset of records).
+- The difference set operation "All - Odd" subtracts or removes all elements belonging to "Odd" from the set "All".
+- The mathematical result consists exclusively of even numbers (or the elements of "All" that are NOT in "Odd").
+
+
+2. SQL Representation using JOINs:
+------------------------------------------------------------------------------------------------------------------------
+To achieve an equivalent operation in SQL (the set difference A - B), a LEFT JOIN is combined with a WHERE ...
+IS NULL clause (a technique known as a Left Anti Semi Join).
+
+
+3. What type of JOIN should be used?:
+------------------------------------------------------------------------------------------------------------------------
+A LEFT JOIN (or LEFT OUTER JOIN) is used.
+
+
+4. Conceptual Example:
+------------------------------------------------------------------------------------------------------------------------
+SELECT a.*
+FROM All_Numbers a
+LEFT JOIN Odd_Numbers o ON a.number = o.number
+WHERE o.number IS NULL;
+
+Explanation:
+The LEFT JOIN retrieves all records from "All" and pairs them with matching records from "Odd".
+Adding WHERE o.number IS NULL filters out matches, leaving only the elements that belong to "All" but NOT to "Odd".
+========================================================================================================================
