@@ -3,6 +3,7 @@
         "heght",
         "HGCM",
         "Inoue",
-        "llist"
+        "llist",
+        "SQLERRM"
     ]
 }
