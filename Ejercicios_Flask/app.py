@@ -1,6 +1,7 @@
 import json
 from flask import Flask, request, jsonify
 
+
 app = Flask(__name__)
 
 FILE_PATH = "tareas.json"
@@ -16,7 +17,9 @@ def read_tasks():
     try:
         with open(FILE_PATH, "r") as file:
             return json.load(file)
-    except:
+    except FileNotFoundError:
+        return []
+    except json.JSONDecodeError:
         return []
 
 
@@ -50,6 +53,23 @@ def get_tasks():
 def create_task():
     tasks = read_tasks()
     data = request.get_json()
+    
+    if not data:
+      return jsonify({"error": "No JSON payload provided"}), 400
+
+    task_id = data.get("id")
+
+    # Enforce positive integer ID (rejects None, "", booleans, floats, strings)
+    if task_id is None or type(task_id) is not int or task_id <= 0:
+      return (
+        jsonify({
+            "error": (
+                "Field 'id' is required and must be a valid positive integer"
+            )
+        }),
+        400,
+    )
+
 
     # Validations
     if "id" not in data:
