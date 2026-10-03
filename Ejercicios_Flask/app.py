@@ -72,19 +72,17 @@ def create_task():
 
 
     # Validations
-    if "id" not in data:
-        return jsonify({"error": "Task must have an id"}), 400
 
     if any(t["id"] == data["id"] for t in tasks):
         return jsonify({"error": "Task id already exists"}), 400
 
-    if not data.get("title"):
+    if not data.get("title") or not str(data.get("title")).strip():
         return jsonify({"error": "Task must have a title"}), 400
 
-    if not data.get("description"):
+    if not data.get("description") or not str(data.get("description")).strip():
         return jsonify({"error": "Task must have a description"}), 400
 
-    if not data.get("status"):
+    if not data.get("status") or not str(data.get("status")).strip():
         return jsonify({"error": "Task must have a status"}), 400
 
     if data["status"] not in VALID_STATUS:
