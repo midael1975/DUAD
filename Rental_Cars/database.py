@@ -38,9 +38,7 @@ class PgManager:
     def execute_query(self, query, params=None):
         with self.connection.cursor(cursor_factory=RealDictCursor) as cursor:
             cursor.execute(query, params)
-
-
-        # Revisamos si el query devolvió algo
-        if query.strip().upper().startswith("select"):
-            results = cursor.fetchall()
-        return None
+            # Revisamos si el query devolvió algo
+            if query.strip().upper().startswith("SELECT"):
+                return cursor.fetchall()
+            return None
