@@ -101,7 +101,7 @@ class RentalRepository(BaseRepository):
             car_id = rental_result[0]["car_id"]
 
             #2. We use execute_query (fixing the error of self.db.execute)
-            self.db.execute("BEGIN;")
+            self.db.execute_query("BEGIN;")
             query = "UPDATE lyfter_car_rental.rentals SET rental_status = %s WHERE id = %s"
             self.db.execute_query(query, (status, rental_id))
 

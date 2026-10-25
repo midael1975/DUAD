@@ -86,8 +86,8 @@ def change_rental_status(rental_id: int, data: StatusUpdate):
     return {"message": f"Rental status changed to {data.status}"}
 
 @app.patch("/api/rentals/{rental_id}/complete")
-def complete_rental(rental_id: int, car_id: int):
-    success = rental_repo.update_status(rental_id, 'COMPLETED', car_id)
+def complete_rental(rental_id: int):
+    success = rental_repo.update_status(rental_id, 'COMPLETED')
     if not success:
         raise HTTPException(
             status_code=400,
