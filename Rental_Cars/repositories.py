@@ -2,16 +2,20 @@ class BaseRepository:
     def __init__(self, db_manager):
         self.db = db_manager
 
-    def _build_filter_query(self, base_query: str, filters: dict) -> tuple:
+    def _build_filter_query(self, base_query: str, filters: dict, allowed_columns: list) -> tuple:
         if not filters:
             return base_query, ()
-        
+
         conditions = []
         params = []
         for column, value in filters.items():
-            conditions.append(f"{column} = %s")
-            params.append(value)
-            
+            if column in allowed_columns:
+                conditions.append(f"{column} = %s")
+                params.append(value)
+
+        if not conditions:
+            return base_query, ()
+
         final_query = base_query + " WHERE " + " AND ".join(conditions)
         return final_query, tuple(params)
 
@@ -37,7 +41,9 @@ class UserRepository(BaseRepository):
 
     def get_all(self, filters: dict):
         base_query = "SELECT id, name, email, username, account_status FROM lyfter_car_rental.users"
-        query, params = self._build_filter_query(base_query, filters)
+        # Define which columns are valid for filtering
+        valid_columns = ['id', 'name', 'email', 'username', 'account_status']
+        query, params = self._build_filter_query(base_query, filters, valid_columns)
         return self.db.execute_query(query, params)
 
 class CarRepository(BaseRepository):
@@ -61,8 +67,10 @@ class CarRepository(BaseRepository):
             return False
 
     def get_all(self, filters: dict):
-        base_query = "SELECT * FROM lyfter_car_rental.cars"
-        query, params = self._build_filter_query(base_query, filters)
+        base_query = "SELECT id, brand, model, manufacture_year, car_status FROM lyfter_car_rental.cars"
+        # Define which columns are valid for filtering
+        valid_columns = ['id', 'brand', 'model', 'manufacture_year', 'car_status']
+        query, params = self._build_filter_query(base_query, filters, valid_columns)
         return self.db.execute_query(query, params)
 
 class RentalRepository(BaseRepository):
@@ -118,5 +126,5 @@ class RentalRepository(BaseRepository):
 
     def get_all(self, filters: dict):
         base_query = "SELECT * FROM lyfter_car_rental.rentals"
-        query, params = self._build_filter_query(base_query, filters)
+        query, params = self._build_filter_query(base_query, filters, valid_columns=['id', 'user_id', 'car_id', 'rental_status'])
         return self.db.execute_query(query, params)

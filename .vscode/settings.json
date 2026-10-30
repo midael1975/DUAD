@@ -14,10 +14,12 @@
         "Nueva",
         "Probando",
         "psycopg",
+        "pycache",
         "pydantic",
         "Revisamos",
         "SQLERRM",
         "tarea",
-        "uvicorn"
+        "uvicorn",
+        "venv"
     ]
 }
