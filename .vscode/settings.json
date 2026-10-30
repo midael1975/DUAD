@@ -1,17 +1,25 @@
 {
     "cSpell.words": [
         "correcto",
+        "creando",
         "devolvió",
+        "fastapi",
         "heght",
         "HGCM",
         "Inoue",
         "llist",
         "lyfter",
         "midael",
+        "moroso",
         "Nueva",
         "Probando",
+        "psycopg",
+        "pycache",
+        "pydantic",
         "Revisamos",
         "SQLERRM",
-        "tarea"
+        "tarea",
+        "uvicorn",
+        "venv"
     ]
 }
