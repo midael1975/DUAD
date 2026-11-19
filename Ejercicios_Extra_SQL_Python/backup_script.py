@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 DB_CONFIG = {
-    "dbname": "lyfter_rental_cars",
+    "dbname": "lyfter_car_rental",
     "user": "postgres",
     "password": "midael#1975",
     "host": "localhost",
