@@ -17,9 +17,11 @@
         "pycache",
         "pydantic",
         "Revisamos",
+        "schemaname",
         "SQLERRM",
         "tarea",
         "uvicorn",
+        "VARCHAR",
         "venv"
     ]
 }
